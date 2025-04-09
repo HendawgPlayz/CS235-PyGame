@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Player has a sprite and can move. Still too fast and small.">
+    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Player is larger and moves faster!">
+      <change afterPath="$PROJECT_DIR$/player_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -83,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744221807802</updated>
       <workItem from="1744221810235" duration="2343000" />
-      <workItem from="1744235036353" duration="7199000" />
+      <workItem from="1744235036353" duration="7874000" />
     </task>
     <task id="LOCAL-00001" summary="Made base screen window.">
       <option name="closed" value="true" />
@@ -125,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744241387836</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Player is larger and moves faster!">
+      <option name="closed" value="true" />
+      <created>1744242394715</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744242394715</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,9 +145,10 @@
     <MESSAGE value="Testing a push" />
     <MESSAGE value="Player exists, now you can move" />
     <MESSAGE value="Player has a sprite and can move. Still too fast and small." />
-    <option name="LAST_COMMIT_MESSAGE" value="Player has a sprite and can move. Still too fast and small." />
+    <MESSAGE value="Player is larger and moves faster!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player is larger and moves faster!" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744242036924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744242501517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
