@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Testing a push">
+    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Player exists, now you can move">
+      <change afterPath="$PROJECT_DIR$/art_Assets/Improved_Sprite_Sheet copy.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -61,6 +62,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/art_Assets" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744221807802</updated>
       <workItem from="1744221810235" duration="2343000" />
-      <workItem from="1744235036353" duration="618000" />
+      <workItem from="1744235036353" duration="6285000" />
     </task>
     <task id="LOCAL-00001" summary="Made base screen window.">
       <option name="closed" value="true" />
@@ -104,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744235195359</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Player exists, now you can move">
+      <option name="closed" value="true" />
+      <created>1744235744262</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744235744262</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,9 +127,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made base screen window." />
     <MESSAGE value="Testing a push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing a push" />
+    <MESSAGE value="Player exists, now you can move" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player exists, now you can move" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744235412729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744241339666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
