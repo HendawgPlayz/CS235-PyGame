@@ -4,7 +4,7 @@ class PlayerClass:
     def __init__(self, x, y, direction, sprite_sheet):
         self.x = x
         self.y = y
-        self.speed = 200
+        self.speed = 300
         self.velocity_x = 0
         self.velocity_y = 0
         self.direction = direction
@@ -18,14 +18,12 @@ class PlayerClass:
             "down": self.sprite_sheet.subsurface(pygame.Rect(0, 32, 32, 32)),
             "left": self.sprite_sheet.subsurface(pygame.Rect(32, 32, 32, 32))
         }
-
-        scale_factor = 2.2
+        scale_factor = 4
 
         for direction in self.sprite_dir:
             original = self.sprite_dir[direction]
             scaled = pygame.transform.scale(original, (32 * scale_factor, 32 * scale_factor))
             self.sprite_dir[direction] = scaled
-
 
 
     def update(self, _delta_time):
@@ -45,5 +43,9 @@ class PlayerClass:
         self.direction = "right"
         self.velocity_x = 1
 
-    def draw(self, game_screen):
-        game_screen.blit(self.sprite_dir[self.direction], (self.x, self.y))
+    def draw(self, game_screen, cam_x, cam_y):
+        sprite_char = self.sprite_dir[self.direction]
+        game_screen.blit(sprite_char, (
+            self.x - cam_x - sprite_char.get_width() // 2,
+            self.y - cam_y - sprite_char.get_height() // 2
+        ))
