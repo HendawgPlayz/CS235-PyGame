@@ -1,5 +1,5 @@
 import pygame
-from player_class import PlayerClass
+from player_class import PlayerClass, BulletClass
 
 pygame.init()
 SCREEN_WIDTH = 1280
@@ -33,6 +33,8 @@ collision_objects = \
     pygame.Rect(110, 330, 30, 15),  # Living room table
 ]
 
+bullets = []
+
 run = True
 while run:
 
@@ -46,12 +48,17 @@ while run:
     key = pygame.key.get_pressed()
     if key[pygame.K_a]:
         player.left()
-    elif key[pygame.K_s]:
+    if key[pygame.K_s]:
         player.down()
-    elif key[pygame.K_d]:
+    if key[pygame.K_d]:
         player.right()
-    elif key[pygame.K_w]:
+    if key[pygame.K_w]:
         player.up()
+    if key[pygame.K_SPACE] and player.can_shoot():
+        bullet = BulletClass(player.x, player.y, player.direction)
+        bullets.append(bullet)
+        player.time_since_last_shot = 0
+
     player.update(delta_time, collision_objects)
 
     for event in pygame.event.get():
@@ -60,7 +67,15 @@ while run:
 
     # DRAWING #
 
+    screen.fill((0,0,0))
     screen.blit(background, (-camera_x, -camera_y))
+
+    for bul_round in bullets[:]:
+        if bul_round.update(delta_time, collision_objects):
+            bul_round.draw(screen, camera_x, camera_y)
+        else:
+            bullets.remove(bul_round)
+
     player.draw(screen, camera_x, camera_y)
 
     # for wall in collision_objects: # Shows hit boxes
@@ -69,5 +84,4 @@ while run:
     #     ), 2)
 
     pygame.display.update()
-
 pygame.quit()

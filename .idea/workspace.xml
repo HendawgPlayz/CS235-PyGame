@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Borders are beginning to be placed, debug red squares are used">
+    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="World hitboxes are in and hidden. Player is now faster to make game more fun haha">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/player_class.py" afterDir="false" />
@@ -87,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744221807802</updated>
       <workItem from="1744221810235" duration="2343000" />
-      <workItem from="1744235036353" duration="15355000" />
+      <workItem from="1744235036353" duration="20493000" />
     </task>
     <task id="LOCAL-00001" summary="Made base screen window.">
       <option name="closed" value="true" />
@@ -169,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744246824313</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="World hitboxes are in and hidden. Player is now faster to make game more fun haha">
+      <option name="closed" value="true" />
+      <created>1744257637739</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744257637739</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,10 +193,11 @@
     <MESSAGE value="Player can now walk around screen with a working background. Scale and speed is proper. Next up: collision." />
     <MESSAGE value="Forgot to add background" />
     <MESSAGE value="Borders are beginning to be placed, debug red squares are used" />
-    <option name="LAST_COMMIT_MESSAGE" value="Borders are beginning to be placed, debug red squares are used" />
+    <MESSAGE value="World hitboxes are in and hidden. Player is now faster to make game more fun haha" />
+    <option name="LAST_COMMIT_MESSAGE" value="World hitboxes are in and hidden. Player is now faster to make game more fun haha" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$player_class.coverage" NAME="player_class Coverage Results" MODIFIED="1744245086721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744257575373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$player_class.coverage" NAME="player_class Coverage Results" MODIFIED="1744264729477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744265188714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
