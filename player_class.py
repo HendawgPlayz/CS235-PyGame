@@ -4,7 +4,7 @@ class PlayerClass:
     def __init__(self, x, y, direction, sprite_sheet):
         self.x = x
         self.y = y
-        self.speed = 300
+        self.speed = 450
         self.velocity_x = 0
         self.velocity_y = 0
         self.direction = direction
