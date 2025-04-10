@@ -26,9 +26,27 @@ class PlayerClass:
             self.sprite_dir[direction] = scaled
 
 
-    def update(self, _delta_time):
+    def update(self, _delta_time, walls):
+        # Saves original position in the event that there is collision
+        old_x = self.x
+        old_y = self.y
+
+        # Tries movement
         self.x += self.velocity_x * self.speed * _delta_time
         self.y += self.velocity_y * self.speed * _delta_time
+
+        sprite = self.sprite_dir[self.direction]
+        player_hitbox = pygame.Rect(self.x - sprite.get_width() // 2,
+                                    self.y - sprite.get_height() // 2,
+                                    sprite.get_width(),
+                                    sprite.get_height())
+
+        for wall in walls:
+            if player_hitbox.colliderect(wall):
+                # Undoes movement
+                self.x = old_x
+                self.y = old_y
+                break
 
     def up(self):
         self.direction = "up"
@@ -44,8 +62,8 @@ class PlayerClass:
         self.velocity_x = 1
 
     def draw(self, game_screen, cam_x, cam_y):
-        sprite_char = self.sprite_dir[self.direction]
-        game_screen.blit(sprite_char, (
-            self.x - cam_x - sprite_char.get_width() // 2,
-            self.y - cam_y - sprite_char.get_height() // 2
+        sprite = self.sprite_dir[self.direction]
+        game_screen.blit(sprite, (
+            self.x - cam_x - sprite.get_width() // 2,
+            self.y - cam_y - sprite.get_height() // 2
         ))

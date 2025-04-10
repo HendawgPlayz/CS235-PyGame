@@ -13,6 +13,15 @@ background = pygame.image.load("art_Assets/GameBackground.png").convert()
 camera_x = 0
 camera_y = 0
 
+collision_objects = \
+[ # x, y, width, height
+    pygame.Rect(20, 25, 10, 950),   # left wall
+    pygame.Rect(1500, 25, 10, 950), # right wall
+    pygame.Rect(250, 20, 950, 10), # top wall
+    pygame.Rect(1500, 25, 10, 950), # bottom wall
+    pygame.Rect(600, 800, 64, 64),
+]
+
 run = True
 while run:
 
@@ -34,13 +43,17 @@ while run:
         player.right()
     elif key[pygame.K_w]:
         player.up()
-    player.update(delta_time)
+    player.update(delta_time, collision_objects)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
     player.draw(screen, camera_x, camera_y)
+    for wall in collision_objects:
+        pygame.draw.rect(screen, (255, 0, 0), (
+            wall.x - camera_x, wall.y - camera_y, wall.width, wall.height
+        ), 2)
     pygame.display.update()
 
 pygame.quit()
