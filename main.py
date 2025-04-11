@@ -1,5 +1,5 @@
-import pygame
-from player_class import PlayerClass, BulletClass
+import pygame # 5 hour in
+from character_classing import PlayerClass, BulletClass, EnemyClass
 
 pygame.init()
 SCREEN_WIDTH = 1280
@@ -8,7 +8,9 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 
 player = PlayerClass(SCREEN_WIDTH//2, SCREEN_HEIGHT//2, "down", "art_Assets/Improved_Sprite_Sheet copy.png")
+test_enemy = EnemyClass(700, 500, "down", "art_Assets/Enemy_SpriteSheet.png")
 background = pygame.image.load("art_Assets/GameBackground.png").convert()
+
 
 camera_x = 0
 camera_y = 0
@@ -35,6 +37,8 @@ collision_objects = \
 
 bullets = []
 
+enemies = []
+
 run = True
 while run:
 
@@ -44,6 +48,8 @@ while run:
 
     player.velocity_x = 0
     player.velocity_y = 0
+    test_enemy.velocity_x = 0
+    test_enemy.velocity_y = 0
 
     key = pygame.key.get_pressed()
     if key[pygame.K_a]:
@@ -60,6 +66,7 @@ while run:
         player.time_since_last_shot = 0
 
     player.update(delta_time, collision_objects)
+    test_enemy.update(delta_time, collision_objects)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -76,6 +83,7 @@ while run:
         else:
             bullets.remove(bul_round)
 
+    test_enemy.draw(screen, camera_x, camera_y)
     player.draw(screen, camera_x, camera_y)
 
     # for wall in collision_objects: # Shows hit boxes

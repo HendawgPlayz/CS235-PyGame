@@ -120,3 +120,21 @@ class BulletClass:
 
     def draw(self, game_screen, cam_x, cam_y):
         pygame.draw.circle(game_screen, (255, 225, 0), (self.x - cam_x, self.y - cam_y), 4)
+
+class EnemyClass(PlayerClass):
+    def __init__(self, x, y, direction, sprite_sheet):
+       super().__init__(x, y, direction, sprite_sheet)
+       self.sprite_dir = \
+           {
+               "up": self.sprite_sheet.subsurface(pygame.Rect(0, 0, 63, 63)),
+               "down": self.sprite_sheet.subsurface(pygame.Rect(63, 0, 63, 63)),
+               "left": self.sprite_sheet.subsurface(pygame.Rect(0, 63, 63, 63)),
+               "right": self.sprite_sheet.subsurface(pygame.Rect(63, 63, 63, 63))
+           }
+       scale_factor = 2
+
+       for direction in self.sprite_dir:  # Scales sprite to preference
+           original = self.sprite_dir[direction]
+           scaled = pygame.transform.scale(original, (64 * scale_factor, 64 * scale_factor))
+           self.sprite_dir[direction] = scaled
+
