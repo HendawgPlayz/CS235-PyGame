@@ -9,6 +9,8 @@ class PlayerClass:
         self.velocity_y = 0
         self.direction = direction
         self.time_since_last_shot = 0
+        self.time_since_last_enemy = 0
+        self.enemy_cooldown = 1
         self.shot_cooldown = 0.2
         self.sprites = []
         self.sprite_sheet = pygame.image.load(sprite_sheet).convert_alpha()
@@ -33,6 +35,7 @@ class PlayerClass:
         old_x = self.x
         old_y = self.y
         self.time_since_last_shot += _delta_time
+        self.time_since_last_enemy += _delta_time
 
         # Tries movement
         self.x += self.velocity_x * self.speed * _delta_time
@@ -66,6 +69,9 @@ class PlayerClass:
 
     def can_shoot(self):
         return self.time_since_last_shot >= self.shot_cooldown
+
+    def enemy_can_spawn(self):
+        return  self.time_since_last_enemy >= self.enemy_cooldown
 
     def draw(self, game_screen, cam_x, cam_y):
         sprite = self.sprite_dir[self.direction]
@@ -122,8 +128,10 @@ class BulletClass:
         pygame.draw.circle(game_screen, (255, 225, 0), (self.x - cam_x, self.y - cam_y), 4)
 
 class EnemyClass(PlayerClass):
-    def __init__(self, x, y, direction, sprite_sheet):
+    def __init__(self, x, y, direction, sprite_sheet, player):
        super().__init__(x, y, direction, sprite_sheet)
+       self.speed = 100
+       self.player = player
        self.sprite_dir = \
            {
                "up": self.sprite_sheet.subsurface(pygame.Rect(0, 0, 63, 63)),
@@ -137,4 +145,35 @@ class EnemyClass(PlayerClass):
            original = self.sprite_dir[direction]
            scaled = pygame.transform.scale(original, (64 * scale_factor, 64 * scale_factor))
            self.sprite_dir[direction] = scaled
+
+    def update(self, _delta_time, walls):
+        # Saves original position of char in the event that there is collision
+        old_x = self.x
+        old_y = self.y
+        self.time_since_last_shot += _delta_time
+
+        dx = self.player.x - self.x
+        dy = self.player.y - self.y
+
+        distance = max((dx ** 2 + dy ** 2) ** 0.5, 0.01)  # avoid division by zero
+
+        self.velocity_x = dx / distance
+        self.velocity_y = dy / distance
+
+        # Tries movement
+        self.x += self.velocity_x * self.speed * _delta_time
+        self.y += self.velocity_y * self.speed * _delta_time
+
+        sprite = self.sprite_dir[self.direction]
+        player_hitbox = pygame.Rect(self.x - sprite.get_width() // 2,
+                                    self.y - sprite.get_height() // 2,
+                                    sprite.get_width(),
+                                    sprite.get_height())
+
+        for wall in walls:
+            if player_hitbox.colliderect(wall):
+                # Undoes movement
+                self.x = old_x
+                self.y = old_y
+                break
 
