@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Adpated the enemy child class. Now maps and spawns in properly. Needs AI and health/damage implementation">
+    <list default="true" id="b8e54314-b18d-4f39-a1ab-df44ff930b00" name="Changes" comment="Enemy now spawns in at top door every 6 seconds or so. There is a cooldown timer allowing for them to spawn half seconds from each other so they don't overlap!">
+      <change afterPath="$PROJECT_DIR$/art_Assets/heart_img.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/character_classing.py" beforeDir="false" afterPath="$PROJECT_DIR$/character_classing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -88,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744221807802</updated>
       <workItem from="1744221810235" duration="2343000" />
-      <workItem from="1744235036353" duration="33106000" />
+      <workItem from="1744235036353" duration="35031000" />
     </task>
     <task id="LOCAL-00001" summary="Made base screen window.">
       <option name="closed" value="true" />
@@ -194,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744337050294</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Enemy now spawns in at top door every 6 seconds or so. There is a cooldown timer allowing for them to spawn half seconds from each other so they don't overlap!">
+      <option name="closed" value="true" />
+      <created>1744682337739</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744682337739</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,11 +222,12 @@
     <MESSAGE value="World hitboxes are in and hidden. Player is now faster to make game more fun haha" />
     <MESSAGE value="Added the ability to shoot with customizable cooldown. Player can now strafe." />
     <MESSAGE value="Adpated the enemy child class. Now maps and spawns in properly. Needs AI and health/damage implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adpated the enemy child class. Now maps and spawns in properly. Needs AI and health/damage implementation" />
+    <MESSAGE value="Enemy now spawns in at top door every 6 seconds or so. There is a cooldown timer allowing for them to spawn half seconds from each other so they don't overlap!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enemy now spawns in at top door every 6 seconds or so. There is a cooldown timer allowing for them to spawn half seconds from each other so they don't overlap!" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$character_classing.coverage" NAME="character_classing Coverage Results" MODIFIED="1744337951972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$player_class.coverage" NAME="player_class Coverage Results" MODIFIED="1744265472880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744682231667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS235_Free_Coding_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1744684164139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

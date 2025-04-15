@@ -10,10 +10,15 @@ class PlayerClass:
         self.direction = direction
         self.time_since_last_shot = 0
         self.time_since_last_enemy = 0
+        self.time_since_last_damage = 0
         self.enemy_cooldown = 1
         self.shot_cooldown = 0.2
+        self.damage_cooldown = 1
+        self.max_health = 3
+        self.health = 3
         self.sprites = []
         self.sprite_sheet = pygame.image.load(sprite_sheet).convert_alpha()
+        self.heart_image = pygame.image.load("art_Assets/heart_img.png").convert_alpha()
 
         self.sprite_dir = \
         {
@@ -29,6 +34,14 @@ class PlayerClass:
             scaled = pygame.transform.scale(original, (32 * scale_factor, 32 * scale_factor))
             self.sprite_dir[direction] = scaled
 
+    def get_hitbox(self):
+        sprite = self.sprite_dir[self.direction]
+        player_hitbox = pygame.Rect(self.x - sprite.get_width() // 2,
+                                    self.y - sprite.get_height() // 2,
+                                    sprite.get_width(),
+                                    sprite.get_height())
+        return player_hitbox
+
 
     def update(self, _delta_time, walls):
         # Saves original position of char in the event that there is collision
@@ -36,16 +49,13 @@ class PlayerClass:
         old_y = self.y
         self.time_since_last_shot += _delta_time
         self.time_since_last_enemy += _delta_time
+        self.time_since_last_damage += _delta_time
 
         # Tries movement
         self.x += self.velocity_x * self.speed * _delta_time
         self.y += self.velocity_y * self.speed * _delta_time
 
-        sprite = self.sprite_dir[self.direction]
-        player_hitbox = pygame.Rect(self.x - sprite.get_width() // 2,
-                                    self.y - sprite.get_height() // 2,
-                                    sprite.get_width(),
-                                    sprite.get_height())
+        player_hitbox = self.get_hitbox()
 
         for wall in walls:
             if player_hitbox.colliderect(wall):
@@ -72,6 +82,13 @@ class PlayerClass:
 
     def enemy_can_spawn(self):
         return  self.time_since_last_enemy >= self.enemy_cooldown
+
+    def can_be_damaged(self):
+        return  self.time_since_last_damage >= self.damage_cooldown
+
+    def draw_health(self, game_screen):
+        for i in range(self.health):
+            game_screen.blit(self.heart_image, (10 + i * 70, 10))
 
     def draw(self, game_screen, cam_x, cam_y):
         sprite = self.sprite_dir[self.direction]
@@ -102,6 +119,13 @@ class BulletClass:
         if self.direction == "right":
             self.velocity_x = 1
 
+    def get_hitbox(self):
+        bullet_hitbox = pygame.Rect(self.x - self.width // 2,
+                                    self.y - self.height // 2,
+                                    self.width,
+                                    self.height)
+        return bullet_hitbox
+
     def update(self, _delta_time, walls):
         # Saves original position of bullet in the event that there is collision
         old_x = self.x
@@ -111,10 +135,7 @@ class BulletClass:
         self.x += self.velocity_x * self.speed * _delta_time
         self.y += self.velocity_y * self.speed * _delta_time
 
-        bullet_hitbox = pygame.Rect(self.x - self.width // 2,
-                                    self.y - self.height // 2,
-                                    self.width,
-                                    self.height)
+        bullet_hitbox = self.get_hitbox()
 
         for wall in walls:
             if bullet_hitbox.colliderect(wall):

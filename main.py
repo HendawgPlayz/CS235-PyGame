@@ -14,7 +14,7 @@ background = pygame.image.load("art_Assets/GameBackground.png").convert()
 camera_x = 0
 camera_y = 0
 wave_timer = 0
-wave_interval = 10
+wave_interval = 3
 
 player_collision_objects = \
 [ # x, y, width, height
@@ -81,6 +81,7 @@ while run:
         enemy_queue.pop()
         player.time_since_last_enemy = 0
 
+
     player.velocity_x = 0
     player.velocity_y = 0
 
@@ -111,6 +112,10 @@ while run:
     screen.blit(background, (-camera_x, -camera_y))
 
     for bul_round in bullets[:]:
+        for enemy in enemies[:]:
+            if enemy.get_hitbox().colliderect(bul_round.get_hitbox()):
+                print("Bullet hit enemy!")
+                enemies.remove(enemy)
         if bul_round.update(delta_time, player_collision_objects):
             bul_round.draw(screen, camera_x, camera_y)
         else:
@@ -118,7 +123,15 @@ while run:
     for enemy in enemies[:]:
         enemy.update(delta_time, enemy_collision_objects)
         enemy.draw(screen, camera_x, camera_y)
+        if player.get_hitbox().colliderect(enemy.get_hitbox()) and player.can_be_damaged():
+            player.health -= 1
+            player.time_since_last_damage = 0
+            if player.health <= 0:
+                pygame.quit()
+
+
     player.draw(screen, camera_x, camera_y)
+    player.draw_health(screen)
 
     # for wall in player_collision_objects: # Shows hit boxes
     #     pygame.draw.rect(screen, (255, 0, 0), (
