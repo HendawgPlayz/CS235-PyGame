@@ -1,4 +1,6 @@
 import pygame
+pygame.font.init()
+font = pygame.font.Font("art_Assets/PixelifySans-VariableFont_wght.ttf", 36)
 
 class PlayerClass:
     def __init__(self, x, y, direction, sprite_sheet):
@@ -16,6 +18,7 @@ class PlayerClass:
         self.damage_cooldown = 1
         self.max_health = 3
         self.health = 3
+        self.ammo = 20
         self.sprites = []
         self.sprite_sheet = pygame.image.load(sprite_sheet).convert_alpha()
         self.heart_image = pygame.image.load("art_Assets/heart_img.png").convert_alpha()
@@ -89,6 +92,10 @@ class PlayerClass:
     def draw_health(self, game_screen):
         for i in range(self.health):
             game_screen.blit(self.heart_image, (10 + i * 70, 10))
+
+    def draw_ammo(self, game_screen):
+        text = font.render(f"Ammo: {self.ammo}", True, (255, 255, 255))
+        game_screen.blit(text, (10, 60))
 
     def draw(self, game_screen, cam_x, cam_y):
         sprite = self.sprite_dir[self.direction]

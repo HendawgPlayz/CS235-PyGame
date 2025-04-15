@@ -94,10 +94,11 @@ while run:
         player.right()
     if key[pygame.K_w]:
         player.up()
-    if key[pygame.K_SPACE] and player.can_shoot():
+    if key[pygame.K_SPACE] and player.can_shoot() and player.ammo > 0:
         bullet = BulletClass(player.x, player.y, player.direction)
         bullets.append(bullet)
         player.time_since_last_shot = 0
+        player.ammo -= 1
 
     player.update(delta_time, player_collision_objects)
 
@@ -114,7 +115,6 @@ while run:
     for bul_round in bullets[:]:
         for enemy in enemies[:]:
             if enemy.get_hitbox().colliderect(bul_round.get_hitbox()):
-                print("Bullet hit enemy!")
                 enemies.remove(enemy)
         if bul_round.update(delta_time, player_collision_objects):
             bul_round.draw(screen, camera_x, camera_y)
@@ -132,6 +132,7 @@ while run:
 
     player.draw(screen, camera_x, camera_y)
     player.draw_health(screen)
+    player.draw_ammo(screen)
 
     # for wall in player_collision_objects: # Shows hit boxes
     #     pygame.draw.rect(screen, (255, 0, 0), (
